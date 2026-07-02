@@ -107,7 +107,14 @@ Thank You
 - `index1.html` – home page with articles menu
 
 ---
+## 🚀 How to Run
 
+1. Clone or download this repository.
+2. Open the project folder.
+3. Run `index.html` in your preferred web browser.
+4. Explore the website and switch between **Light** and **Dark Mode**.
+
+---
 # 🚀 Future Enhancements
 
 - User Authentication System
