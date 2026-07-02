@@ -1,0 +1,124 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+
+<meta charset="UTF-8"> 
+<title>Techpedia | Home</title> <!-- Browser tab ka title -->
+
+<style> /* Internal CSS start */
+
+/* ===== GLOBAL RESET ===== */
+*{ 
+  margin:0;                 /* Default outer space remove */
+  padding:0;                /* Default inner space remove */
+  box-sizing:border-box;    /* Width/height ke andar padding + border include */
+  font-family:'Arial', sans-serif; /* Font set */
+}
+
+body{
+  color:white;              /* Default text color white */
+}
+
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;        /* Navbar scroll ke sath fix rahe */
+    top: 0;                 /* Top se chipka hua */
+    width: 100%;            /* Full width */
+    background: #1a2b4c;    /* Navbar background color */
+    color: white;           /* Navbar text color */
+    padding: 15px 50px;     /* Top/bottom 15px, left/right 50px */
+    display: flex;          /* Flexbox enable */
+    justify-content: space-between; /* Logo left, links right */
+    align-items: center;    /* Vertically center */
+    z-index: 100;           /* Sab se upar layer */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5); /* Shadow effect */
+}
+
+nav h1 {
+    font-size: 40px;        /* Logo text size */
+    color: #00d4ff;         /* Cyan color */
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; /* Glow effect */
+    animation: glow 2s ease-in-out infinite alternate; /* Animation */
+}
+
+
+
+
+nav a {
+    color: white;           /* Links white */
+    margin-left: 20px;      /* Links ke darmiyan gap */
+    text-decoration: none;  /* Underline remove */
+    font-size: 25px;        /* Link size */
+    transition: 0.01s;       /* Smooth hover effect  jaisy hi cursor hatao to colour bnd hojay ga  */
+}
+
+nav a:hover {
+    color: #00d4ff;         /* Hover pe cyan */
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; /* Hover glow */
+}
+
+/* ===== HERO SECTION ===== */
+.hero{
+  height:100vh;             /* Full screen height */
+  padding-top:150px;        /* Navbar ke neeche space */
+  background:
+  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* Dark overlay */
+  url('https://images.unsplash.com/photo-1508780709619-79562169bc64?crop=entropy&cs=tinysrgb&fit=max&w=1600')
+  center/cover no-repeat;   /* Background image settings */
+
+  display:flex;             /* Flexbox enable */
+  justify-content:center;   /* Horizontally center */
+  align-items:center;       /* Vertically center */
+  flex-direction:column;    /* Column layout */
+  text-align:center;        /* Text center */
+}
+
+.hero h1{
+  font-size:100px;           /* Hero heading size */
+  color:#00d4ff;            /* Cyan heading */
+  animation:float 4s ease-in-out infinite; /* Floating animation */
+}
+
+.hero p{
+  font-size:24px;           /* Paragraph size */
+  margin-top:15px;          /* Heading se gap */
+}
+
+/* ===== FLOAT ANIMATION ===== */
+@keyframes float{
+  0%{transform:translateY(0);}        /* Start position */
+  50%{transform:translateY(-20px);}   /* Upar move */
+  100%{transform:translateY(0);}      /* Wapas neeche */
+}
+
+
+
+
+
+</style> <!-- CSS end -->
+</head>
+
+<body> <!-- Body start -->
+
+<nav> <!-- Navbar -->
+  <h1>Techpedia</h1> <!-- Website logo/title -->
+
+  <div>                                     <!-- Links container -->
+        <a href="index.html">Home</a>       <!-- Home link -->
+         <a href="login.html">SignIn</a>  
+        <a href="about.html">About</a>      <!-- About link -->
+        <a href="articles.html">Articles</a><!-- Articles link -->
+        <a href="feedback.html">Feedback</a><!-- Feedback link -->
+  </div>
+</nav>
+
+<section class="hero"> <!-- Hero section -->
+  <h1>Techpedia</h1> <!-- Hero title -->
+  <p>Your Encyclopedia of Programming & Technology</p> <!-- Tagline -->
+
+
+
+</section> <!-- Hero section end -->
+
+</body>
+</html>

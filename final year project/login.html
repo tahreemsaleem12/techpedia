@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SIGN IN / SIGN UP PAGE</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#06162f,#0e2a52);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* Dark overlay */
+  url('https://images.unsplash.com/photo-1508780709619-79562169bc64?crop=entropy&cs=tinysrgb&fit=max&w=1600')
+  center/cover no-repeat;   /* Background image settings */
+}
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;        /* Navbar scroll ke sath fix rahe */
+    top: 0;                 /* Top se chipka hua */
+    width: 100%;            /* Full width */
+    background: #1a2b4c;    /* Navbar background color */
+    color: white;           /* Navbar text color */
+    padding: 15px 50px;     /* Top/bottom 15px, left/right 50px */
+    display: flex;          /* Flexbox enable */
+    justify-content: space-between; /* Logo left, links right */
+    align-items: center;    /* Vertically center */
+    z-index: 100;           /* Sab se upar layer */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5); /* Shadow effect */
+}
+
+nav h1 {
+    font-size: 28px;        /* Logo text size */
+    color: #00d4ff;         /* Cyan color */
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; /* Glow effect */
+    animation: glow 2s ease-in-out infinite alternate; /* Animation */
+}
+
+
+
+
+nav a {
+    color: white;           /* Links white */
+    margin-left: 20px;      /* Links ke darmiyan gap */
+    text-decoration: none;  /* Underline remove */
+    font-size: 25px;        /* Link size */
+    transition: 0.01s;       /* Smooth hover effect  jaisy hi cursor hatao to colour bnd hojay ga  */
+}
+
+nav a:hover {
+    color: #00d4ff;         /* Hover pe cyan */
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; /* Hover glow */
+}
+
+/* form card */
+.form-card{
+    width:820px;
+    background:#0a1f3f;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:18px;
+    box-shadow:0 0 20px rgba(0,0,0,0.35);
+    animation:float 7s ease-in-out infinite;
+    
+    background-color: rgba(9, 29, 60, 0.5); /* dark blue with 70% opacity */
+    padding: 30px;
+    border-radius: 18px;
+}
+
+h1{
+    font-family:'Playfair Display',serif;
+    text-align:center;
+    color:#6cb6ff;
+    font-size:44px;
+    margin-bottom:6px;
+}
+h2{
+    text-align:center;
+    color:#cfeee9;
+    font-size:13px;
+    letter-spacing:4px;
+    margin-bottom:40px;
+}
+
+.field{
+    position:relative;
+    margin-bottom:28px;
+}
+.field input,
+.field textarea{
+    width:100%;
+    padding:15px 12px;
+    background:transparent;
+    border:none;
+    border-bottom:2px solid rgba(255,255,255,.45);
+    color:#fff;
+    font-size:14px;
+    outline:none;
+}
+.field label{
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#cfeee9;
+    font-size:13px;
+    pointer-events:none;
+    transition:.35s ease;
+}
+
+/* floating effect */
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label{
+    top:-9px;
+    font-size:11px;
+    color:#2491df;
+}
+.field input:focus,
+.field textarea:focus{
+    border-color:#1d89ed;
+}
+
+.file-field input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.4);
+    color:white;
+    cursor:pointer;
+}
+
+/* layout */
+.row{
+    display:flex;
+    gap:20px;
+}
+
+.section-title{
+    color:#1f74dc;
+    font-size:14px;
+    letter-spacing:2px;
+    margin:35px 0 18px;
+    align-content:center;
+}
+
+.checks{
+    display:flex;
+    gap:22px;
+    color:#fff;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+textarea{
+    resize:none;
+    height:90px;
+}
+
+/* submit button */
+button{
+    width:100%;
+    padding:15px;
+    margin-top:35px;
+    background:linear-gradient(135deg,#3e8ed4,#3889cb);
+    border-radius:35px;
+    font-size:20px;
+    color:#2995e1;
+    cursor:pointer;
+    transition:.4s ease;
+    border:none;
+}
+
+/*  YAHAN CHANGE KIYA GAYA HAI */
+button a{
+    color:white;
+    text-decoration:none;
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(0,0,0,.45);
+}
+</style>
+</head>
+
+<body>
+<nav> <!-- Navbar -->
+  <h1>Techpedia</h1> <!-- Website logo/title -->
+
+  <div> <!-- Links container -->
+        <a href="index.html">Home</a>       <!-- Home link -->
+         <a href="login.html">SignIn</a>  
+        <a href="about.html">About</a>      <!-- About link -->
+        <a href="articles.html">Articles</a><!-- Articles link -->
+        <a href="feedback.html">Feedback</a><!-- Feedback link -->
+  </div>
+</nav>
+<div class="form-card">
+    <h1>TECHPEDIA</h1>
+    <h2>Create Your Account</h2>
+
+    <div class="row">
+        <div class="field">
+            <input type="text" required placeholder=" ">
+            <label>UserName</label>
+        </div>
+        <div class="field">
+            <input type="text" required placeholder=" ">
+            <label>Date of Birth (DD / MM / YYYY)</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="field">
+            <input type="text" required placeholder=" ">
+            <label>Password</label>
+        </div>
+        <div class="field">
+            <input type="tel" required placeholder=" ">
+            <label>Phone Number</label>
+        </div>
+    </div>
+
+    <div class="field">
+        <input type="text" required placeholder=" ">
+        <label>Email</label>
+    </div>
+
+    <div class="section-title">CLASS DETAILS</div>
+
+    <div class="checks">
+        <label><input type="radio" name="level"> Beginner</label>
+        <label><input type="radio" name="level"> Intermediate</label>
+        <label><input type="radio" name="level"> Advanced</label>
+    </div>
+
+    <button>
+        <a href="index1.html">Submit</a>
+    </button>
+
+</div>
+
+</body>
+</html>

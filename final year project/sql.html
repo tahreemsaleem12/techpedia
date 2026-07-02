@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+body {
+    background: #0b1e3b;
+    color: white;
+    line-height: 1.8;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #1a2b4c;
+    color: white;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+nav h1 {
+    font-size: 28px;
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 25px;
+    transition: 0.3s;
+}
+nav a:hover {
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+}
+
+/* Main container */
+main {
+    width: 100%;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+
+/* Article box */
+.article-box {
+    display: flex;
+    background: linear-gradient(145deg, #1f3a6e, #0b1e3b);
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+    animation: fadeInUp 1.5s ease-in-out;
+    min-height: 750px;
+}
+
+/* Left side: text */
+.article-text {
+    flex: 1;
+    padding: 50px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInLeft 1.5s ease-in-out;
+}
+.article-text h2 {
+    font-size: 36px;
+    color: #00d4ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff;
+    animation: shimmer 3s linear infinite;
+}
+.article-text h3 {
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #8ec6ff;
+}
+.article-text p {
+    color: #d0e7ff;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.article-text ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+.article-text ul li {
+    margin-bottom: 8px;
+}
+/*links jo attach kiay uski css*/
+.read-more {
+    color: white;           /* Link color white */
+    text-decoration: none;  /* No underline */
+    font-weight: bold;
+    font-size:large;
+}
+
+.read-more:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #cccccc;             /* Slight gray on hover */
+}
+
+/* Right side: multiple images */
+.article-image {
+    flex: 1;
+    height: 800px;
+    width: 800px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Right side align */
+    align-items: flex-start;
+    padding: 20px;
+}
+.right-images {
+    height: 800px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* Vertical stack */
+    gap: 100px;
+    max-height: 850px;      /* Limit height */
+    
+}
+.right-images img {
+    height: 800px;
+    width: 800px;
+    width: 100%;
+    max-width: 800px;       /* Max width */
+    height: 800px;
+    align-items: flex-end;
+    border-radius: 70px;
+    transition: transform 0.5s, filter 0.5s;
+}
+.right-images img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) saturate(1.1);
+}
+
+/* Flowing animated side gradient */
+.article-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    transform: skewX(-25deg);
+    animation: flow 5s linear infinite;
+    z-index: 1;
+}
+
+/* Glitter overlay */
+.article-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+    animation: glitter 3s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes flow {
+    0% { left: -50%; }
+    100% { left: 100%; }
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+@keyframes glitter {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff; }
+    100% { text-shadow: 0 0 15px #00d4ff, 0 0 25px #00d4ff; }
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .article-box {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+    }
+    .article-image {
+        height: auto;
+        justify-content: center;
+        padding: 10px;
+    }
+    .right-images {
+         
+        flex-wrap: wrap;
+        max-height: none;
+        justify-content: center;
+        gap: 10px;
+    }
+    .right-images img {
+        max-width: 45%;
+    }
+}
+</style>
+</head>
+</head>
+<nav>
+    <h1>Techpedia</h1>
+    <div>
+        <a href="index1.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="articles.html">Articles</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+</nav>
+<main>
+    <div class="article-box">
+    <div class="article-text">
+        <h2>SQL Databases</h2>
+        <p>SQL databases, or Structured Query Language databases, are essential tools for storing, managing, and retrieving structured data. They organize information into tables with rows and columns, which allows for efficient data handling in applications ranging from small websites to large enterprise systems.</p>
+
+        <p>The strength of SQL lies in its standardization. Regardless of which SQL-based database you use, the core syntax for querying and managing data remains the same. This allows developers and data professionals to work across multiple platforms with ease.</p>
+
+        <p>SQL databases use relational models, where relationships between tables are established using primary and foreign keys. This ensures data consistency, avoids redundancy, and maintains the integrity of information across large datasets.</p>
+
+        <h3>Popular SQL Databases</h3>
+        <ul>
+            <li><strong>MySQL:</strong> Open-source, widely used in web applications and supported by almost every hosting service.</li>
+            <li><strong>PostgreSQL:</strong> Advanced, robust, and suitable for complex data-driven applications.</li>
+            <li><strong>Oracle:</strong> Enterprise-grade database for large organizations with high transaction loads.</li>
+            <li><strong>SQLite:</strong> Lightweight and ideal for embedded systems, mobile apps, and small projects.</li>
+        </ul>
+
+        <p>Key features of SQL databases include powerful query capabilities, support for transactions, data security through access controls, and scalability to handle massive datasets. This makes SQL an indispensable skill for data analysts, software developers, and IT professionals.</p>
+
+        <p>Applications of SQL databases include online banking systems, e-commerce platforms, content management systems, and data analytics. The ability to write complex queries allows organizations to generate insights, create reports, and make data-driven decisions efficiently.</p>
+<p>In 2025, SQL databases function as the authoritative "source of truth" for structured data, operating on a relational model where information is partitioned into strictly defined tables. This structure relies on Primary Keys to uniquely identify records and Foreign Keys to establish logical links between different datasets, such as connecting a "Customer ID" in an orders table to a specific profile in a users table. This relational rigor ensures that data remains deduplicated and highly organized, allowing for complex queries that can aggregate millions of rows of data across multiple tables with mathematical precision.
+</p>
+<p>The defining characteristic of modern SQL systems is their adherence to ACID properties, which safeguard the database against corruption. In a 2025 enterprise environment, this means that even if a server loses power during a sensitive bank transfer, the database ensures the transaction is either fully completed or completely rolled back to its original state. This reliability is why SQL remains the primary choice for mission-critical applications—such as ERP systems, healthcare records, and financial ledgers—where even a minor data inconsistency could have catastrophic consequences.
+</p>
+<p>Beyond simple storage, SQL has evolved to handle the high-velocity demands of the current AI-driven era. Modern engines like PostgreSQL and SQL Server 2025 now incorporate Vector Search capabilities, enabling them to store and query high-dimensional data used by Large Language Models (LLMs). This allows developers to combine traditional structured data—like a user's purchase history—with unstructured AI data—like a semantic representation of their interests—all within a single, secure environment. Consequently, SQL has shifted from a static storage tool to a dynamic engine that powers real-time recommendation systems and predictive analytics.</p>
+<p>To manage these systems, developers use a standardized set of commands categorized into different languages. Data Definition Language (DDL) is used to build the architecture (e.g., CREATE, ALTER), while Data Manipulation Language (DML) is used to handle the records themselves (e.g., INSERT, UPDATE, DELETE). The most common command, SELECT, allows for powerful filtering and sorting, often enhanced by Indexes, which act like a book's index to help the database find specific information without scanning every single row, significantly boosting performance in high-traffic applications.</p>
+        <p>In summary, learning SQL is crucial for anyone dealing with data. Mastery of SQL ensures efficient management of structured information and forms the foundation for advanced topics such as database optimization, indexing, and performance tuning.</p>
+   <a href="https://www.w3schools.com/sql/"
+     target="_blank"
+     class="read-more">
+     Click to get more information →
+  </a>
+    </div>
+    <div class="article-image">
+        <div class="right-images">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png"alt="Java Logo">
+    <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80
+"alt="Java Logo">
+    <img src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?auto=format&fit=crop&w=1200&q=80
+"alt="Java Logo">
+        </div>
+        
+    </div>
+</div>
+</main>
+</body>
+</html>

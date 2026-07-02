@@ -1,0 +1,211 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+
+<meta charset="UTF-8"> 
+<title>Techpedia | About</title> 
+
+<style> /* Internal CSS start */
+
+/* ===== GLOBAL RESET ===== */
+*{
+    margin:0;                 /* Default margin remove */
+    padding:0;                /* Default padding remove */
+    box-sizing:border-box;    /* Padding + border width ke andar count */
+    font-family: "Segoe UI", Arial, sans-serif; /* Font set */
+}
+
+body{
+    background:linear-gradient(250deg,#06162f,#0e2a52); /* Background gradient */
+    color:white;              /* Default text color white */
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+    position:fixed;           /* Navbar scroll ke sath fixed */
+    top:0;                    /* Top pe chipka hua */
+    left:0;                   /* Left side se start */
+    width:100%;               /* Full screen width */
+    height:60px;              /* Navbar ki height */
+    background:#162a4d;       /* Navbar background color */
+    display:flex;             /* Flexbox enable */
+    align-items:center;       /* Vertically center items */
+    justify-content:flex-end; /* Links ko right side align */
+    padding:0 40px;           /* Left/right padding */
+    gap:30px;                 /* Links ke darmiyan gap */
+    z-index:1000;             /* Sab se upar layer */
+}
+
+/* ===== NAVBAR LINKS ===== */
+.navbar a{
+    color:white;              /* Links white */
+    text-decoration:solid;    /* Underline nahi (normal look) */
+    font-size:25px;           /* Link text size */
+}
+
+.navbar a:hover{
+    color:#00d4ff;            /* Hover pe cyan color */
+}
+
+/* ===== HEADER ===== */
+header{
+    text-align:center;        /* Text center align */
+    padding:70px 30px;        /* Top/bottom & left/right space */
+}
+
+header h1{
+    font-size:40px;           /* Heading size */
+    color:#6cb6ff;            /* Light blue color */
+}
+
+header p{
+    margin-top:10px;          /* Heading se neeche gap */
+    color:#cfd9e6;            /* Light grey-blue color */
+}
+
+/* ===== MAIN CONTENT CONTAINER ===== */
+.container{
+    max-width:1200px;         /* Maximum content width */
+    margin:auto;              /* Center align container */
+    padding:30px;             /* Andar ka space */
+}
+
+/* ===== SECTIONS ===== */
+.section{
+    background:#0a1f3f;       /* Section background color */
+    padding:30px;             /* Inner spacing */
+    margin-bottom:25px;       /* Sections ke darmiyan gap */
+    border-radius:18px;       /* Rounded corners */
+    box-shadow:0 0 20px rgba(0,0,0,0.35); /* Shadow effect */
+}
+
+.section h2{
+    color:#6cb6ff;            /* Section heading color */
+    margin-bottom:12px;       /* Heading se neeche gap */
+}
+
+.section p{
+    font-size:15px;           /* Paragraph text size */
+    line-height:1.8;          /* Lines ke darmiyan gap */
+    color:#e2ecff;            /* Text color */
+}
+
+/* ===== HIGHLIGHTS GRID ===== */
+.highlights{
+    display:grid;             /* CSS Grid enable */
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    /* Responsive columns: minimum 220px, maximum 1fr */
+    gap:20px;                 /* Boxes ke darmiyan gap */
+    margin-top:20px;          /* Top spacing */
+}
+
+.highlight-box{
+    background:#132f5c;       /* Box background color */
+    padding:20px;             /* Inner spacing */
+    border-radius:14px;       /* Rounded corners */
+    text-align:center;        /* Text center */
+}
+
+.highlight-box h3{
+    color:#6cb6ff;            /* Box heading color */
+    margin-bottom:8px;        /* Heading se neeche gap */
+}
+
+/* ===== FOOTER ===== */
+footer{
+    text-align:center;        /* Footer text center */
+    padding:18px;             /* Inner spacing */
+    background:#06162f;       /* Footer background */
+    color:#8faad1;            /* Footer text color */
+    margin-top:40px;          /* Content se gap */
+}
+
+</style> <!-- CSS end -->
+</head>
+
+<body> <!-- Body start -->
+
+<nav class="navbar"> <!-- Navbar -->
+    <a href="index1.html">Home</a>       <!-- Home link -->
+     <a href="login.html">SignIn</a>  
+    <a href="about.html">About</a>      <!-- About link -->
+    <a href="articles.html">Articles</a><!-- Articles link -->
+    <a href="feedback.html">Feedback</a><!-- Feedback link -->
+</nav>
+
+<header> <!-- Header section -->
+    <h1>About Techpedia</h1> <!-- Page heading -->
+    <p>Your Digital Guide to Modern Technology</p> <!-- Subtitle -->
+</header>
+
+<div class="container"> <!-- Main container -->
+
+    <!-- WHAT IS TECHPEDIA -->
+    <div class="section"> <!-- Section box -->
+        <h2>What is Techpedia?</h2>
+        <p>
+            Techpedia is an educational technology website created to provide
+            simple and easy-to-understand information about modern computing
+            concepts. This platform is specially designed for students and
+            beginners who want to explore the world of technology.
+        </p>
+    </div>
+
+    <!-- MISSION -->
+    <div class="section">
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to make technical knowledge accessible for everyone.
+            Techpedia explains complex topics in a clear and structured way so
+            learners can understand technology without confusion.
+        </p>
+    </div>
+
+    <!-- TOPICS -->
+    <div class="section">
+        <h2>Topics Covered</h2>
+
+        <div class="highlights"> <!-- Grid container -->
+
+            <div class="highlight-box">
+                <h3>Programming</h3>
+                <p>Python, JavaScript, HTML & CSS</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Databases</h3>
+                <p>SQL & Data Management</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>AI & ML</h3>
+                <p>Artificial Intelligence & Machine Learning</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Emerging Tech</h3>
+                <p>Cloud, Cybersecurity & Blockchain</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TECHNOLOGIES -->
+    <div class="section">
+        <h2>Technologies Used</h2>
+        <p>
+            This project is developed using HTML and CSS. It focuses on
+            front-end design principles such as layout, responsiveness, and
+            user interface design without using JavaScript or backend
+            technologies.
+        </p>
+    </div>
+
+</div> <!-- Container end -->
+
+<footer> <!-- Footer -->
+    © 2025 Techpedia | About Page
+</footer>
+
+</body>
+</html>

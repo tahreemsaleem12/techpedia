@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+body {
+    background: #0b1e3b;
+    color: white;
+    line-height: 1.8;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #1a2b4c;
+    color: white;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+nav h1 {
+    font-size: 28px;
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 25px;
+    transition: 0.3s;
+}
+nav a:hover {
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+}
+
+/* Main container */
+main {
+    width: 100%;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+
+/* Article box */
+.article-box {
+    display: flex;
+    background: linear-gradient(145deg, #1f3a6e, #0b1e3b);
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+    animation: fadeInUp 1.5s ease-in-out;
+    min-height: 750px;
+}
+
+/* Left side: text */
+.article-text {
+    flex: 1;
+    padding: 50px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInLeft 1.5s ease-in-out;
+}
+.article-text h2 {
+    font-size: 36px;
+    color: #00d4ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff;
+    animation: shimmer 3s linear infinite;
+}
+.article-text h3 {
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #8ec6ff;
+}
+.article-text p {
+    color: #d0e7ff;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.article-text ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+.article-text ul li {
+    margin-bottom: 8px;
+}
+/*links jo attach kiay uski css*/
+.read-more {
+    color: white;           /* Link color white */
+    text-decoration: none;  /* No underline */
+    font-weight: bold;
+    font-size:large;
+}
+
+.read-more:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #cccccc;             /* Slight gray on hover */
+}
+
+/* Right side: multiple images */
+.article-image {
+    flex: 1;
+    height: 800px;
+    width: 800px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Right side align */
+    align-items: flex-start;
+    padding: 20px;
+}
+.right-images {
+    height: 800px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* Vertical stack */
+    gap: 100px;
+    max-height: 850px;      /* Limit height */
+    
+}
+.right-images img {
+    height: 800px;
+    width: 800px;
+    width: 100%;
+    max-width: 800px;       /* Max width */
+    height: 800px;
+    align-items: flex-end;
+    border-radius: 70px;
+    transition: transform 0.5s, filter 0.5s;
+}
+.right-images img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) saturate(1.1);
+}
+
+/* Flowing animated side gradient */
+.article-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    transform: skewX(-25deg);
+    animation: flow 5s linear infinite;
+    z-index: 1;
+}
+
+/* Glitter overlay */
+.article-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+    animation: glitter 3s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes flow {
+    0% { left: -50%; }
+    100% { left: 100%; }
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+@keyframes glitter {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff; }
+    100% { text-shadow: 0 0 15px #00d4ff, 0 0 25px #00d4ff; }
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .article-box {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+    }
+    .article-image {
+        height: auto;
+        justify-content: center;
+        padding: 10px;
+    }
+    .right-images {
+         
+        flex-wrap: wrap;
+        max-height: none;
+        justify-content: center;
+        gap: 10px;
+    }
+    .right-images img {
+        max-width: 45%;
+    }
+}
+</style>
+</head>
+</head>
+<nav>
+    <h1>Techpedia</h1>
+    <div>
+        <a href="index1.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="articles.html">Articles</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+</nav>
+<main>
+    <!-- Article 2: JavaScript -->
+    <div class="article-box">
+        <div class="article-text">
+            <!-- ORIGINAL CONTENT KEPT AS-IS -->
+            <h2>JavaScript Programming Language</h2>
+
+            <h3>Overview</h3>
+            <p>JavaScript is a high-level, interpreted programming language widely used for web development to create interactive and dynamic websites. It allows manipulation of web page content in real-time.</p>
+
+            <h3>History</h3>
+            <p>JavaScript was created by Brendan Eich in 1995 during his time at Netscape Communications. Initially developed as a client-side scripting language, it has evolved into a versatile language used for server-side programming via Node.js.</p>
+            <p>Over the years, the language has grown through standards such as ECMAScript, which defines its syntax, features, and capabilities for cross-browser compatibility.</p>
+
+            <h3>Features</h3>
+            <p>JavaScript supports object-oriented, functional, and event-driven programming. It allows asynchronous execution using callbacks, promises, and async/await, making it efficient for web applications.</p>
+            <ul>
+                <li>Dynamic and interpreted</li>
+                <li>Event-driven and asynchronous programming</li>
+                <li>Client-side and server-side execution</li>
+                <li>Rich ecosystem of frameworks and libraries</li>
+                <li>Cross-platform and browser compatibility</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <p>JavaScript is essential for modern web development, enabling interactive elements, animations, and dynamic content updates. Frameworks like React, Angular, and Vue streamline building complex web applications.</p>
+            <p>It is also used for server-side development with Node.js, mobile app development with React Native, desktop apps using Electron, and even game development with libraries such as Phaser.</p>
+
+            <h3>Community</h3>
+            <p>JavaScript has a large developer community that contributes to frameworks, libraries, tutorials, and open-source tools. Organizations like Ecma International maintain the ECMAScript standard to ensure consistency.</p>
+            <p>The active community enables continuous innovation, support for new web technologies, and extensive learning resources for developers of all levels.</p>
+<p>The JavaScript ecosystem has undergone a significant architectural shift toward performance and developer ergonomics. While React, Vue, and Angular continue to lead the frontend, 2025 has seen a surge in "Signals" for fine-grained reactivity, allowing developers to update specific parts of a page without re-rendering entire components. On the backend, traditional environments like Node.js now compete with high-speed runtimes like Bun and Deno, which offer built-in support for TypeScript, faster execution, and native package management. This "all-in-one" approach has simplified the web development lifecycle, reducing the need for complex build tools and configurations.</p>
+<p>Beyond the browser, JavaScript is a dominant force in cross-platform development and emerging technologies. Through frameworks like React Native and Electron, a single JavaScript codebase can power mobile apps on iOS and Android, as well as desktop applications for Windows and macOS. In the realm of Artificial Intelligence, JavaScript is increasingly used for "client-side AI," where libraries like TensorFlow.js and Transformers.js allow machine learning models to run directly on a user’s device rather than a remote server. This shift enhances privacy and reduces latency, ensuring that JavaScript remains at the cutting edge of software innovation for years to come.</p>
+<p>In 2025, JavaScript remains the indispensable backbone of the modern internet, evolving from a simple browser scripting tool into a comprehensive, full-stack powerhouse. As the only language that runs natively in every web browser, it dictates the user experience for billions, enabling the highly interactive, real-time interfaces we expect today. With the official release of the ECMAScript 2025 (ES16) specification, the language has introduced powerful new features like Set methods for easier data manipulation, Sync Iterator helpers, and the highly anticipated Temporal API, which finally provides a robust, modern solution for handling dates and times without the bugs associated with the legacy Date object.</p>
+            <h3>See Also</h3>
+            <ul>
+                <li>React (library)</li>
+                <li>Angular (framework)</li>
+                <li>Vue.js (framework)</li>
+                <li>Node.js (runtime environment)</li>
+                <li>TypeScript (superset language)</li>
+            </ul>
+            <a href="https://www.w3schools.com/js/"
+     target="_blank"
+     class="read-more">
+     Click to get  more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085
+" alt="JavaScript Logo">
+                <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2
+" alt="Java Logo">
+                <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72
+" alt="C Logo">
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+body {
+    background: #0b1e3b;
+    color: white;
+    line-height: 1.8;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #1a2b4c;
+    color: white;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+nav h1 {
+    font-size: 28px;
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 25px;
+    transition: 0.3s;
+}
+nav a:hover {
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+}
+
+/* Main container */
+main {
+    width: 100%;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+
+/* Article box */
+.article-box {
+    display: flex;
+    background: linear-gradient(145deg, #1f3a6e, #0b1e3b);
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+    animation: fadeInUp 1.5s ease-in-out;
+    min-height: 750px;
+}
+
+/* Left side: text */
+.article-text {
+    flex: 1;
+    padding: 50px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInLeft 1.5s ease-in-out;
+}
+.article-text h2 {
+    font-size: 36px;
+    color: #00d4ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff;
+    animation: shimmer 3s linear infinite;
+}
+.article-text h3 {
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #8ec6ff;
+}
+.article-text p {
+    color: #d0e7ff;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.article-text ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+.article-text ul li {
+    margin-bottom: 8px;
+}
+/*links jo attach kiay uski css*/
+.read-more {
+    color: white;           /* Link color white */
+    text-decoration: none;  /* No underline */
+    font-weight: bold;
+    font-size:large;
+}
+
+.read-more:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #cccccc;             /* Slight gray on hover */
+}
+
+/* Right side: multiple images */
+.article-image {
+    flex: 1;
+    height: 800px;
+    width: 800px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Right side align */
+    align-items: flex-start;
+    padding: 20px;
+}
+.right-images {
+    height: 800px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* Vertical stack */
+    gap: 100px;
+    max-height: 850px;      /* Limit height */
+    
+}
+.right-images img {
+    height: 800px;
+    width: 800px;
+    width: 100%;
+    max-width: 800px;       /* Max width */
+    height: 800px;
+    align-items: flex-end;
+    border-radius: 70px;
+    transition: transform 0.5s, filter 0.5s;
+}
+.right-images img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) saturate(1.1);
+}
+
+/* Flowing animated side gradient */
+.article-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    transform: skewX(-25deg);
+    animation: flow 5s linear infinite;
+    z-index: 1;
+}
+
+/* Glitter overlay */
+.article-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+    animation: glitter 3s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes flow {
+    0% { left: -50%; }
+    100% { left: 100%; }
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+@keyframes glitter {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff; }
+    100% { text-shadow: 0 0 15px #00d4ff, 0 0 25px #00d4ff; }
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .article-box {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+    }
+    .article-image {
+        height: auto;
+        justify-content: center;
+        padding: 10px;
+    }
+    .right-images {
+         
+        flex-wrap: wrap;
+        max-height: none;
+        justify-content: center;
+        gap: 10px;
+    }
+    .right-images img {
+        max-width: 45%;
+    }
+}
+</style>
+</head>
+</head>
+<nav>
+    <h1>Techpedia</h1>
+    <div>
+        <a href="index1.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="articles.html">Articles</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+</nav>
+<main>
+    </div>
+ <div class="article-box">
+        <div class="article-text">
+            <h2>Cloud Computing</h2>
+
+            <h3>Overview</h3>
+            <p>Cloud Computing provides computing services like storage, servers, databases, and software over the internet instead of local machines. It allows users to access resources anytime from anywhere.</p>
+            
+            <h3>History</h3>
+            <p>Cloud computing evolved from shared mainframe systems in the 1960s. Modern cloud services emerged in the 2000s with companies like Amazon Web Services (AWS), Google Cloud, and Microsoft Azure.</p>
+            <h3>Features</h3>
+            <ul>
+                <li>On-demand resources</li>
+                <li>Scalability and flexibility</li>
+                <li>Pay-as-you-go pricing</li>
+                <li>High availability</li>
+                <li>Remote access</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <ul>
+                <li>Website hosting</li>
+                <li>Online storage</li>
+                <li>Software as a Service (SaaS)</li>
+                <li>Data backup and recovery</li>
+                <li>Big data analytics</li>
+            </ul>
+
+            <h3>Community</h3>
+            <p>Cloud communities include cloud architects, DevOps engineers, and IT professionals. Online forums, certifications, and cloud conferences help professionals grow and collaborate.</p>
+
+<p>Cloud computing reduces the need for expensive hardware.
+
+Businesses can scale resources quickly based on demand.
+
+Cloud security is a shared responsibility between provider and user.
+
+Cloud platforms support innovation and rapid development.
+
+Hybrid and multi-cloud models are becoming popular. </p>
+
+
+            <h3>See Also</h3>
+            <ul>
+                <li>DevOps</li>
+                <li>Virtualization</li>
+                <li>Containers</li>
+                <li>SaaS, PaaS, IaaS</li>
+            </ul>
+             <a href="https://aws.amazon.com/training/"
+     target="_blank"
+     class="read-more">
+     Click to get  more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+                <img src="https://images.pexels.com/photos/1181307/pexels-photo-1181307.jpeg" alt="Python Logo">
+                <img src="https://images.pexels.com/photos/1181253/pexels-photo-1181253.jpeg" alt="Sample Image 2">
+                 
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

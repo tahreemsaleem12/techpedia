@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Techpedia | Articles</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+body {
+    background: #0b1e3b;
+    color: white;
+    line-height: 1.8;
+}
+
+/* Navbar */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #1a2b4c;
+  color: white;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+.top-navbar h1 {
+  font-size: 28px;
+  color: #00d4ff;
+}
+.top-navbar a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+.top-navbar a:hover {
+  color: #00d4ff;
+  text-shadow: 0 0 10px #00d4ff;
+}
+
+/* Bottom Navbar */
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+.bottom-navbar a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s, transform 0.3s;
+}
+.bottom-navbar a:hover {
+  color: #00bfff;
+  transform: scale(1.1);
+}
+
+/* Body padding to avoid overlap with navbars */
+body {
+  padding-top: 80px;   /* height of top navbar */
+  padding-bottom: 60px; /* height of bottom navbar */
+}
+/* Main container */
+main {
+    width: 100%;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+
+/* Article box */
+.article-box {
+    display: flex;
+    background: linear-gradient(145deg, #1f3a6e, #0b1e3b);
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+    animation: fadeInUp 1.5s ease-in-out;
+    min-height: 750px;
+}
+
+/* Left side: text */
+.article-text {
+    flex: 1;
+    padding: 50px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInLeft 1.5s ease-in-out;
+}
+.article-text h2 {
+    font-size: 36px;
+    color: #00d4ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff;
+    animation: shimmer 3s linear infinite;
+}
+.article-text h3 {
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #8ec6ff;
+}
+.article-text p {
+    color: #d0e7ff;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.article-text ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+.article-text ul li {
+    margin-bottom: 8px;
+}
+/*links jo attach kiay uski css*/
+.read-more {
+    color: white;           /* Link color white */
+    text-decoration: none;  /* No underline */
+    font-weight: bold;
+    font-size:large;
+}
+
+.read-more:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #cccccc;             /* Slight gray on hover */
+}
+
+/* Right side: multiple images */
+.article-image {
+    flex: 1;
+    height: 800px;
+    width: 800px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Right side align */
+    align-items: flex-start;
+    padding: 20px;
+}
+.right-images {
+    height: 800px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* Vertical stack */
+    gap: 100px;
+    max-height: 850px;      /* Limit height */
+    
+}
+.right-images img {
+    height: 800px;
+    width: 800px;
+    width: 100%;
+    max-width: 800px;       /* Max width */
+    height: 800px;
+    align-items: flex-end;
+    border-radius: 70px;
+    transition: transform 0.5s, filter 0.5s;
+}
+.right-images img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) saturate(1.1);
+}
+
+/* Flowing animated side gradient */
+.article-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    transform: skewX(-25deg);
+    animation: flow 5s linear infinite;
+    z-index: 1;
+}
+
+/* Glitter overlay */
+.article-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+    animation: glitter 3s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes flow {
+    0% { left: -50%; }
+    100% { left: 100%; }
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+@keyframes glitter {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff; }
+    100% { text-shadow: 0 0 15px #00d4ff, 0 0 25px #00d4ff; }
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .article-box {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+    }
+    .article-image {
+        height: auto;
+        justify-content: center;
+        padding: 10px;
+    }
+    .right-images {
+         
+        flex-wrap: wrap;
+        max-height: none;
+        justify-content: center;
+        gap: 10px;
+    }
+    .right-images img {
+        max-width: 45%;
+    }
+}
+/* ===== LIGHT MODE ===== */
+body.light-mode {
+  background: #f4f7fb;
+  color: #111;
+}
+
+body.light-mode nav {
+  background: #ffffff;
+  color: #111;
+}
+
+body.light-mode nav a {
+  color: #111;
+}
+
+body.light-mode nav a:hover {
+  color: #0077ff;
+}
+
+body.light-mode .hero {
+  background:
+    linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
+    url('https://images.unsplash.com/photo-1508780709619-79562169bc64?crop=entropy&cs=tinysrgb&fit=max&w=1600')
+    center/cover no-repeat;
+}
+
+body.light-mode .hero h1 {
+  color: #0077ff;
+}
+
+body.light-mode .form-card,
+body.light-mode .section {
+  background: #ffffff;
+  color: #111;
+}
+#themeToggle{
+  margin-left:20px;
+  padding:8px 14px;
+  border-radius:20px;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  background:#00d4ff;
+  color:#000;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="top-navbar">
+  <h1>Techpedia</h1>
+  <div class="nav-links">
+    <a href="index1.html">Home</a>
+    <a href="login.html">Sign In</a>
+    <a href="about.html">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="feedback.html">Feedback</a>
+    <button id="themeToggle">🌙</button>
+
+  </div>
+</nav>
+
+<!-- Bottom Navbar -->
+<nav class="bottom-navbar">
+  <a href="python.html">Python Programming</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="htmlandcss.html">HTML & CSS</a>
+    <a href="sql.html">SQL</a>
+    <a href="ai.html">Machine Learning / AI</a>
+    <a href="cloud.html">Cloud</a>
+    <a href="cybersecurity.html">Cybersecurity</a>
+    <a href="blockchain.html">Blockchain</a>
+    <a href="mobileapp.html">Mobile Apps Development</a>
+</nav>
+
+
+<main>
+    
+    <!-- Article 1: Python -->
+    <div class="article-box">
+        <div class="article-text">
+            <h2>Python Programming Language</h2>
+
+            <h3>Overview</h3>
+            <p>Python is a high-level, interpreted programming language designed by Guido van Rossum and first released in 1991. It emphasizes readability and simplicity, using indentation to define code blocks.</p>
+            
+            <h3>History</h3>
+            <p>Python was developed as a successor to the ABC programming language. Python 2.0 was released in 2000, introducing list comprehensions and garbage collection. Python 3.0, released in 2008, fixed inconsistencies from earlier versions.</p>
+            <p>Its evolution has focused on increasing code clarity and expanding its library ecosystem, resulting in widespread adoption in education, web development, and scientific research.</p>
+
+            <h3>Features</h3>
+            <p>Python supports multiple programming paradigms: procedural, object-oriented, and functional. It is dynamically typed and comes with a comprehensive standard library covering file handling, networking, web services, and more.</p>
+            <ul>
+                <li>Readable syntax with indentation</li>
+                <li>Cross-platform support</li>
+                <li>Dynamic typing and memory management</li>
+                <li>Extensive standard library</li>
+                <li>Support for third-party packages via PyPI</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <p>Python is extensively used in web development, automation, data science, machine learning, artificial intelligence, and scientific computing. Frameworks like Django and Flask enable rapid web application development.</p>
+            <p>Libraries like NumPy, Pandas, Matplotlib, and TensorFlow support data analysis and machine learning tasks, while Python’s simple syntax makes it ideal for rapid prototyping.</p>
+
+            <h3>Community</h3>
+            <p>Python has a large and active community contributing to extensive documentation, tutorials, and open-source libraries. The Python Software Foundation maintains the language and its ecosystem.</p>
+            <p>Community support ensures regular updates, best practices, and numerous learning resources, helping both beginners and professional developers.</p>
+<p>The technical landscape of Python has shifted toward high performance and concurrency to meet modern enterprise demands. A major milestone in 2025 is the official support for a free-threaded build, which allows developers to run Python without the Global Interpreter Lock (GIL), finally unlocking true multi-core parallelism. Additionally, the integration of an experimental Just-In-Time (JIT) compiler and the increasing use of Rust-based tools like the uv package manager have significantly improved Python's execution speed and project management efficiency. </p>
+<p>Beyond technical performance, Python's dominance is sustained by its massive, supportive community and its versatility across various sectors. It remains the backbone of critical industries, from FinTech for fraud detection and algorithmic trading to Healthcare for predictive analytics in patient care. Its accessibility for non-programmers—including mathematicians, financial analysts, and researchers—ensures it continues to lead in interdisciplinary environments. As AI agents and large language models become more integrated into software, Python's rich ecosystem of libraries like TensorFlow, PyTorch, and Polars ensures it remains at the center of the next decade of technological innovation. </p>
+<p>n 2025, Python has solidified its position as the most popular programming language globally, driven largely by its role as the primary "lingua franca" for Artificial Intelligence (AI) and Data Science. With the release of Python 3.14 in October 2025, the language has introduced transformative features such as "t-strings" (template string literals) for custom string processing and "deferred evaluation" of type annotations to improve performance. These updates refine the developer experience by providing more actionable error messages and a modernized, colorful interactive shell (REPL) that aids both beginners and experts in rapid experimentation</p>
+
+            <h3>See Also</h3>
+            <ul>
+                <li>Django (web framework)</li>
+                <li>Flask (web framework)</li>
+                <li>NumPy (scientific computing)</li>
+                <li>Pandas (data analysis)</li>
+                <li>TensorFlow (machine learning)</li>
+            </ul>
+            <a href="https://www.geeksforgeeks.org/python-programming-language/"
+     target="_blank"
+     class="read-more">
+     Click to get  more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Python Logo">
+                <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&w=1200&q=80" alt="Sample Image 2">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" alt="Java Logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Article 2: JavaScript -->
+    <div class="article-box">
+        <div class="article-text">
+            <!-- ORIGINAL CONTENT KEPT AS-IS -->
+            <h2>JavaScript Programming Language</h2>
+
+            <h3>Overview</h3>
+            <p>JavaScript is a high-level, interpreted programming language widely used for web development to create interactive and dynamic websites. It allows manipulation of web page content in real-time.</p>
+
+            <h3>History</h3>
+            <p>JavaScript was created by Brendan Eich in 1995 during his time at Netscape Communications. Initially developed as a client-side scripting language, it has evolved into a versatile language used for server-side programming via Node.js.</p>
+            <p>Over the years, the language has grown through standards such as ECMAScript, which defines its syntax, features, and capabilities for cross-browser compatibility.</p>
+
+            <h3>Features</h3>
+            <p>JavaScript supports object-oriented, functional, and event-driven programming. It allows asynchronous execution using callbacks, promises, and async/await, making it efficient for web applications.</p>
+            <ul>
+                <li>Dynamic and interpreted</li>
+                <li>Event-driven and asynchronous programming</li>
+                <li>Client-side and server-side execution</li>
+                <li>Rich ecosystem of frameworks and libraries</li>
+                <li>Cross-platform and browser compatibility</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <p>JavaScript is essential for modern web development, enabling interactive elements, animations, and dynamic content updates. Frameworks like React, Angular, and Vue streamline building complex web applications.</p>
+            <p>It is also used for server-side development with Node.js, mobile app development with React Native, desktop apps using Electron, and even game development with libraries such as Phaser.</p>
+
+            <h3>Community</h3>
+            <p>JavaScript has a large developer community that contributes to frameworks, libraries, tutorials, and open-source tools. Organizations like Ecma International maintain the ECMAScript standard to ensure consistency.</p>
+            <p>The active community enables continuous innovation, support for new web technologies, and extensive learning resources for developers of all levels.</p>
+<p>The JavaScript ecosystem has undergone a significant architectural shift toward performance and developer ergonomics. While React, Vue, and Angular continue to lead the frontend, 2025 has seen a surge in "Signals" for fine-grained reactivity, allowing developers to update specific parts of a page without re-rendering entire components. On the backend, traditional environments like Node.js now compete with high-speed runtimes like Bun and Deno, which offer built-in support for TypeScript, faster execution, and native package management. This "all-in-one" approach has simplified the web development lifecycle, reducing the need for complex build tools and configurations.</p>
+<p>Beyond the browser, JavaScript is a dominant force in cross-platform development and emerging technologies. Through frameworks like React Native and Electron, a single JavaScript codebase can power mobile apps on iOS and Android, as well as desktop applications for Windows and macOS. In the realm of Artificial Intelligence, JavaScript is increasingly used for "client-side AI," where libraries like TensorFlow.js and Transformers.js allow machine learning models to run directly on a user’s device rather than a remote server. This shift enhances privacy and reduces latency, ensuring that JavaScript remains at the cutting edge of software innovation for years to come.</p>
+<p>In 2025, JavaScript remains the indispensable backbone of the modern internet, evolving from a simple browser scripting tool into a comprehensive, full-stack powerhouse. As the only language that runs natively in every web browser, it dictates the user experience for billions, enabling the highly interactive, real-time interfaces we expect today. With the official release of the ECMAScript 2025 (ES16) specification, the language has introduced powerful new features like Set methods for easier data manipulation, Sync Iterator helpers, and the highly anticipated Temporal API, which finally provides a robust, modern solution for handling dates and times without the bugs associated with the legacy Date object.</p>
+            <h3>See Also</h3>
+            <ul>
+                <li>React (library)</li>
+                <li>Angular (framework)</li>
+                <li>Vue.js (framework)</li>
+                <li>Node.js (runtime environment)</li>
+                <li>TypeScript (superset language)</li>
+            </ul>
+            <a href="https://www.w3schools.com/js/"
+     target="_blank"
+     class="read-more">
+     Click to get  more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085
+" alt="JavaScript Logo">
+                <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2
+" alt="Java Logo">
+                <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72
+" alt="C Logo">
+            </div>
+        </div>
+    </div>
+<div class="article-box">
+    <div class="article-text">
+        <h2>SQL Databases</h2>
+        <p>SQL databases, or Structured Query Language databases, are essential tools for storing, managing, and retrieving structured data. They organize information into tables with rows and columns, which allows for efficient data handling in applications ranging from small websites to large enterprise systems.</p>
+
+        <p>The strength of SQL lies in its standardization. Regardless of which SQL-based database you use, the core syntax for querying and managing data remains the same. This allows developers and data professionals to work across multiple platforms with ease.</p>
+
+        <p>SQL databases use relational models, where relationships between tables are established using primary and foreign keys. This ensures data consistency, avoids redundancy, and maintains the integrity of information across large datasets.</p>
+
+        <h3>Popular SQL Databases</h3>
+        <ul>
+            <li><strong>MySQL:</strong> Open-source, widely used in web applications and supported by almost every hosting service.</li>
+            <li><strong>PostgreSQL:</strong> Advanced, robust, and suitable for complex data-driven applications.</li>
+            <li><strong>Oracle:</strong> Enterprise-grade database for large organizations with high transaction loads.</li>
+            <li><strong>SQLite:</strong> Lightweight and ideal for embedded systems, mobile apps, and small projects.</li>
+        </ul>
+
+        <p>Key features of SQL databases include powerful query capabilities, support for transactions, data security through access controls, and scalability to handle massive datasets. This makes SQL an indispensable skill for data analysts, software developers, and IT professionals.</p>
+
+        <p>Applications of SQL databases include online banking systems, e-commerce platforms, content management systems, and data analytics. The ability to write complex queries allows organizations to generate insights, create reports, and make data-driven decisions efficiently.</p>
+<p>In 2025, SQL databases function as the authoritative "source of truth" for structured data, operating on a relational model where information is partitioned into strictly defined tables. This structure relies on Primary Keys to uniquely identify records and Foreign Keys to establish logical links between different datasets, such as connecting a "Customer ID" in an orders table to a specific profile in a users table. This relational rigor ensures that data remains deduplicated and highly organized, allowing for complex queries that can aggregate millions of rows of data across multiple tables with mathematical precision.
+</p>
+<p>The defining characteristic of modern SQL systems is their adherence to ACID properties, which safeguard the database against corruption. In a 2025 enterprise environment, this means that even if a server loses power during a sensitive bank transfer, the database ensures the transaction is either fully completed or completely rolled back to its original state. This reliability is why SQL remains the primary choice for mission-critical applications—such as ERP systems, healthcare records, and financial ledgers—where even a minor data inconsistency could have catastrophic consequences.
+</p>
+<p>Beyond simple storage, SQL has evolved to handle the high-velocity demands of the current AI-driven era. Modern engines like PostgreSQL and SQL Server 2025 now incorporate Vector Search capabilities, enabling them to store and query high-dimensional data used by Large Language Models (LLMs). This allows developers to combine traditional structured data—like a user's purchase history—with unstructured AI data—like a semantic representation of their interests—all within a single, secure environment. Consequently, SQL has shifted from a static storage tool to a dynamic engine that powers real-time recommendation systems and predictive analytics.</p>
+<p>To manage these systems, developers use a standardized set of commands categorized into different languages. Data Definition Language (DDL) is used to build the architecture (e.g., CREATE, ALTER), while Data Manipulation Language (DML) is used to handle the records themselves (e.g., INSERT, UPDATE, DELETE). The most common command, SELECT, allows for powerful filtering and sorting, often enhanced by Indexes, which act like a book's index to help the database find specific information without scanning every single row, significantly boosting performance in high-traffic applications.</p>
+        <p>In summary, learning SQL is crucial for anyone dealing with data. Mastery of SQL ensures efficient management of structured information and forms the foundation for advanced topics such as database optimization, indexing, and performance tuning.</p>
+   <a href="https://www.w3schools.com/sql/"
+     target="_blank"
+     class="read-more">
+     Click to get more information →
+  </a>
+    </div>
+    <div class="article-image">
+        <div class="right-images">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png"alt="Java Logo">
+    <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80
+"alt="Java Logo">
+    <img src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?auto=format&fit=crop&w=1200&q=80
+"alt="Java Logo">
+        </div>
+        
+    </div>
+</div>
+
+<!-- HTML & CSS Article -->
+<div class="article-box">
+    <div class="article-text">
+        <h2>HTML & CSS</h2>
+        <p>HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) form the backbone of web development. HTML structures the content of web pages, while CSS controls its appearance and layout, allowing developers to create visually appealing, interactive websites.</p>
+
+        <p>HTML uses a system of tags to define elements such as headings, paragraphs, links, images, lists, forms, and multimedia content. Semantic tags like &lt;header&gt;, &lt;section&gt;, &lt;article&gt;, and &lt;footer&gt; provide meaning and improve accessibility and search engine optimization.</p>
+
+        <p>CSS allows control over design aspects, such as typography, colors, spacing, borders, and layout. Using CSS, developers can create responsive designs that adapt seamlessly to different screen sizes, from desktop monitors to mobile devices.</p>
+
+        <h3>Advanced CSS Concepts</h3>
+        <ul>
+            <li>Flexbox and Grid for complex layout structures.</li>
+            <li>CSS animations and transitions for dynamic effects.</li>
+            <li>Media queries for responsive, mobile-first design.</li>
+            <li>Variables, pseudo-classes, and pseudo-elements for reusable and interactive styles.</li>
+        </ul>
+
+        <p>Combining HTML and CSS allows developers to create websites that are both functional and visually engaging. Proper use of design principles and CSS features can significantly enhance user experience.</p>
+
+        <p>Applications of HTML and CSS range from personal portfolios and blogs to professional business websites and e-commerce platforms. They serve as the foundation for front-end development, which is further enhanced by JavaScript for interactivity.</p>
+
+        <p>Mastering HTML and CSS is the first step toward becoming a proficient front-end developer. Understanding these technologies deeply will allow developers to build responsive, accessible, and visually stunning web applications.</p>
+    <p>Container Queries & Subgrid: Moving beyond viewport-based media queries, Container Queries allow elements to respond to the size of their parent container rather than the whole screen. Paired with CSS Subgrid, which lets nested elements align perfectly with a parent's grid tracks, developers can create truly portable and reusable components.</p>
+     <p>Precision and Performance: New features like @starting-style and content-visibility allow for smoother transitions and improved performance by skipping the rendering of off-screen content. Additionally, native mathematical functions like clamp(), mod(), and round() enable fluid typography and pixel-perfect layouts without relying on JavaScript calculations.</p>
+     <p>Advanced Architecture: As projects grow, methodologies like BEM (Block-Element-Modifier) or Cascade Layers (@layer) are used to manage code specificity and avoid "style bleed". These tools ensure that large-scale stylesheets remain maintainable and predictable across enterprise-level applications. </p>
+     <p>Semantic Integrity: Developers now use specialized tags like main, article, section, and nav to define "landmarks" for search engines and assistive technologies. This structure allows screen readers to navigate complex pages efficiently.</p>
+    
+    <p>HTML and CSS are the backbone technologies of web development. HTML (HyperText Markup Language) provides the structure and content of a webpage, defining elements like headings, paragraphs, images, links, and lists. CSS (Cascading Style Sheets) is used to style and layout these elements, controlling colors, fonts, spacing, positioning, and responsive design for different screen sizes.</p>
+    <a href="https://www.w3schools.com/html/"
+     target="_blank"
+     class="read-more">
+     Click to get more information →
+  </a>
+</div>
+    <div class="article-image">
+        <div class="right-images">
+             <img src="https://images.pexels.com/photos/1181380/pexels-photo-1181380.jpeg
+
+
+"alt="Java Logo">
+   <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=1200&q=80
+"alt="Java Logo">
+   
+        </div>
+       
+    </div>
+</div>
+ <div class="article-box">
+        <div class="article-text">
+            <h2>Machine Learning / AI</h2>
+
+            <h3>Overview</h3>
+            <p>Machine Learning (ML) is a subset of Artificial Intelligence (AI) that allows computers to learn from data and improve their performance without being explicitly programmed. AI focuses on creating intelligent systems that can mimic human thinking, decision-making, and problem-solving abilities.</p>
+            
+            <h3>History</h3>
+            <p>The concept of AI began in the 1950s when Alan Turing introduced the idea of machine intelligence. Machine Learning gained popularity in the 1990s with the availability of large datasets and better computing power. In recent years, deep learning and neural networks have driven massive growth in AI.</p>
+            <h3>Features</h3>
+            <ul>
+                <li>Learns from data automatically</li>
+                <li>Improves accuracy over time</li>
+                <li>Handles large and complex datasets</li>
+                <li>Uses algorithms and neural network</li>
+                <li>Enables automation and prediction</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <ul>
+                <li>Voice assistants (Siri, Alexa)</li>
+                <li>Image and speech recognition</li>
+                <li>Recommendation systems</li>
+                <li>Medical diagnosis</li>
+                <li>Self-driving cars</li>
+            </ul>
+
+            <h3>Community</h3>
+            <p>The AI community is very active, including researchers, developers, and companies worldwide. Platforms like GitHub, Kaggle, TensorFlow, and PyTorch help people collaborate, share models, and learn together.</p>
+<p>Machine Learning systems rely heavily on data quality, as better data leads to better predictions. </p>
+<p>AI is transforming industries by automating repetitive and complex tasks.
+
+Ethical concerns like bias and privacy are major discussion topics in AI development.</p>
+<p>Many companies invest heavily in AI to gain competitive advantages.
+
+The future of AI includes general intelligence and human-machine collaboration</p>
+
+<p> Supervised vs Unsupervised Learning
+Machine Learning algorithms are broadly categorized into supervised and unsupervised learning. Supervised learning uses labeled datasets to train models to make predictions, while unsupervised learning discovers patterns in unlabeled data, such as clustering or association.</p>
+<p>Deep learning, a subset of ML, uses neural networks with multiple layers to model complex patterns. It powers modern AI applications like image recognition, natural language processing, and autonomous vehicles.</p>      
+<p>Reinforcement learning trains models through trial and error, rewarding correct actions and penalizing wrong ones. It is widely used in robotics, gaming, and adaptive systems where the AI must learn strategies over time.</p>     
+<p>The quality of data is critical for ML success. Data cleaning, normalization, and feature selection ensure that models are accurate and reliable. Poor-quality data can lead to biased or incorrect predictions.</p>
+<p>Machine Learning is everywhere: in recommendation systems like Netflix, fraud detection in banking, predictive maintenance in industries, medical diagnosis, and autonomous driving. Its versatility makes it a core technology in many sectors.</p>
+<h3>See Also</h3>
+            <ul>
+                <li>Data Science</li>
+                <li>Deep Learning</li>
+                <li>Neural Networks</li>
+                <li>Natural Language Processing</li>
+            </ul>
+            <a href="https://www.tensorflow.org/tutorials"
+     target="_blank"
+     class="read-more">
+     Click to get  more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+                <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg" alt="Python Logo">
+                <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg" alt="Sample Image 2">
+                <img src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg" alt="Java Logo">
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="article-box">
+        <div class="article-text">
+            <h2>Cloud Computing</h2>
+
+            <h3>Overview</h3>
+            <p>Cloud Computing provides computing services like storage, servers, databases, and software over the internet instead of local machines. It allows users to access resources anytime from anywhere.</p>
+            
+            <h3>History</h3>
+            <p>Cloud computing evolved from shared mainframe systems in the 1960s. Modern cloud services emerged in the 2000s with companies like Amazon Web Services (AWS), Google Cloud, and Microsoft Azure.</p>
+            <h3>Features</h3>
+            <ul>
+                <li>On-demand resources</li>
+                <li>Scalability and flexibility</li>
+                <li>Pay-as-you-go pricing</li>
+                <li>High availability</li>
+                <li>Remote access</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <ul>
+                <li>Website hosting</li>
+                <li>Online storage</li>
+                <li>Software as a Service (SaaS)</li>
+                <li>Data backup and recovery</li>
+                <li>Big data analytics</li>
+            </ul>
+
+            <h3>Community</h3>
+            <p>Cloud communities include cloud architects, DevOps engineers, and IT professionals. Online forums, certifications, and cloud conferences help professionals grow and collaborate.</p>
+
+<p>Cloud computing reduces the need for expensive hardware.
+
+Businesses can scale resources quickly based on demand.
+
+Cloud security is a shared responsibility between provider and user.
+
+Cloud platforms support innovation and rapid development.
+
+Hybrid and multi-cloud models are becoming popular. </p>
+
+
+            <h3>See Also</h3>
+            <ul>
+                <li>DevOps</li>
+                <li>Virtualization</li>
+                <li>Containers</li>
+                <li>SaaS, PaaS, IaaS</li>
+            </ul>
+             <a href="https://aws.amazon.com/training/"
+     target="_blank"
+     class="read-more">
+     Click to get  more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+                <img src="https://images.pexels.com/photos/1181307/pexels-photo-1181307.jpeg" alt="Python Logo">
+                <img src="https://images.pexels.com/photos/1181253/pexels-photo-1181253.jpeg" alt="Sample Image 2">
+                 
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="article-box">
+        <div class="article-text">
+            <h2>Cybersecurity</h2>
+
+            <h3>Overview</h3>
+            <p>Cybersecurity protects computer systems, networks, and data from digital attacks, theft, and damage. It ensures confidentiality, integrity, and availability of information</p>
+            
+            <h3>History</h3>
+            <p>Cybersecurity began when computers became networked. Early viruses appeared in the 1980s. With the rise of the internet, cybersecurity became essential for governments and businesses.</p>
+
+            <h3>Features</h3>
+            <ul>
+                <li>Threat detection and prevention</li>
+                <li>Encryption and authentication</li>
+                <li>Network security</li>
+                <li>Malware protection</li>
+                <li>Risk management</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <ul>
+                <li>Protecting personal data</li>
+                <li>Securing financial transactions</li>
+                <li>Safeguarding government systems</li>
+                <li>Preventing cyber attacks</li>
+                <li>Securing cloud environments</li>
+            </ul>
+
+            <h3>Community</h3>
+            <p>The cybersecurity community includes ethical hackers, analysts, and security researchers. Platforms like HackerOne, OWASP, and security conferences support collaboration.</p>
+<p> Cyber threats are increasing as technology grows.
+
+Human awareness is as important as technical security.
+
+Strong passwords and encryption reduce risks.
+
+Cybersecurity laws protect users and organizations.
+
+Continuous monitoring is essential for security.</p>
+<p>Cybersecurity Threats Are Growing
+As technology evolves, cyber threats are becoming more sophisticated. Hackers use advanced malware, phishing techniques, and ransomware to target individuals and organizations, making cybersecurity increasingly critical.</p>
+<p>Importance of Cyber Hygiene
+Good cyber hygiene, such as using strong passwords, enabling two-factor authentication, and updating software regularly, is essential for both individuals and businesses to prevent breaches.</p>
+<p>Network Security Fundamentals
+Network security protects an organization’s internal networks from unauthorized access. Firewalls, intrusion detection systems, and secure VPNs are common tools used to defend against cyber attacks.</p>
+            <h3>See Also</h3>
+            <ul>
+                <li>Ethical Hacking</li>
+                <li>Cryptography</li>
+                <li>Digital Forensics</li>
+                <li>Network Security</li>
+            </ul>
+            <a href="https://owasp.org/"
+     target="_blank"
+     class="read-more">
+     Click to get  more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+
+                <img src="https://images.pexels.com/photos/267614/pexels-photo-267614.jpeg" alt="Sample Image 2">
+                <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg" alt="Java Logo">
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="article-box">
+        <div class="article-text">
+            <h2>Blockchain</h2>
+
+            <h3>Overview</h3>
+            <p>Blockchain is a decentralized digital ledger that records transactions securely across multiple computers. It ensures transparency and prevents data tampering.</p>
+            
+            <h3>History</h3>
+            <p>Blockchain was introduced in 2008 with Bitcoin by an anonymous person named Satoshi Nakamoto. Since then, blockchain has expanded beyond cryptocurrencies.</p>
+            
+
+            <h3>Features</h3>
+            <ul>
+                <li>Decentralization</li>
+                <li>Transparency</li>
+                <li>Immutability</li>
+                <li>Security</li>
+                <li>Distributed ledger</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <ul>
+                <li>Cryptocurrencies</li>
+                <li>Smart contracts</li>
+                <li>Supply chain tracking</li>
+                <li>Digital identity</li>
+                <li>Secure voting systems</li>
+            </ul>
+
+            <h3>Community</h3>
+            <p>The blockchain community includes developers, miners, investors, and researchers. Open-source platforms and forums support collaboration and innovation.</p>
+<p>Blockchain removes the need for intermediaries.
+Transactions are verified by consensus mechanisms.
+Security is achieved through cryptography.
+Blockchain adoption is growing across industries.
+Scalability and energy use remain challenges. </p>
+
+
+            <h3>See Also</h3>
+            <ul>
+                <li>Bitcoin</li>
+                <li>Ethereum</li>
+                <li>Smart Contracts</li>
+                <li>Cryptography</li>
+            </ul>
+            <a href="https://www.blockchain.com/learning-portal"
+     target="_blank"
+     class="read-more">
+     Click to get  more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+                
+                <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg" alt="Sample Image 2">
+                <img src="https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg" alt="Java Logo">
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="article-box">
+        <div class="article-text">
+            <h2>Mobile App Development</h2>
+
+            <h3>Overview</h3>
+            <p>Mobile App Development involves creating applications for smartphones and tablets. These apps run on platforms like Android and iOS.</p>
+            
+            <h3>History</h3>
+            <p>Mobile apps became popular after smartphones emerged in the late 2000s. App stores revolutionized software distribution.</p>
+
+            <h3>Features</h3>
+            <ul>
+                <li>Touch-based interfaces</li>
+                <li>Offline and online functionality</li>
+                <li>Access to device hardware</li>
+                <li>Cross-platform development</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <ul>
+                <li>Social media apps</li>
+                <li>Gaming apps</li>
+                <li>E-commerce apps</li>
+                <li>Educational apps</li>
+            </ul>
+
+            <h3>Community</h3>
+            <p>Mobile development communities include Android and iOS developers worldwide. Forums, SDKs, and developer conferences help growth and innovation.</p>
+<p>Mobile apps improve accessibility and user engagement.
+
+Performance optimization is critical for user satisfaction.
+
+UI/UX design plays a major role in app success.
+
+Security is essential for mobile applications.
+
+Mobile apps continue to shape digital lifestyles. </p>
+
+
+            <h3>See Also</h3>
+            <ul>
+                <li>Android Development</li>
+                <li>iOS Development</li>
+                <li>Flutter</li>
+                <li>React Native</li>
+            
+            </ul>
+             <a href="https://developer.android.com/docs"
+     target="_blank"
+     class="read-more">
+     Click to get more information →
+  </a>
+        </div>
+        <div class="article-image">
+            <div class="right-images">
+                <img src="https://images.pexels.com/photos/1181266/pexels-photo-1181266.jpeg" alt="Python Logo">
+                <img src="https://images.pexels.com/photos/1181323/pexels-photo-1181323.jpeg" alt="Sample Image 2">
+                <img src="https://images.pexels.com/photos/1181366/pexels-photo-1181366.jpeg" alt="Java Logo">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</main>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light-mode");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme","dark");
+    toggleBtn.textContent = "🌙";
+  }
+});
+</script>
+
+</body>
+</html>

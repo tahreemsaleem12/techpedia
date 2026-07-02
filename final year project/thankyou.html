@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Page title -->
+    <title>Tech Pedia | Thank You</title>
+
+    <style>
+        /* Reset default margin & padding */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body styling */
+        body{
+            min-height:100vh; /* Full screen height */
+            background:linear-gradient(135deg,#06162f,#0e2a52); /* Background gradient */
+            display:flex; /* Flexbox layout */
+            flex-direction:column; /* Vertical direction */
+            justify-content:center; /* Center vertically */
+            align-items:center; /* Center horizontally */
+            color:#fff; /* Text color */
+            background:
+  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* Dark overlay */
+  url('https://images.unsplash.com/photo-1508780709619-79562169bc64?crop=entropy&cs=tinysrgb&fit=max&w=1600')
+  center/cover no-repeat;
+
+        }
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;        /* Navbar scroll ke sath fix rahe */
+    top: 0;                 /* Top se chipka hua */
+    width: 100%;            /* Full width */
+    background: #1a2b4c;    /* Navbar background color */
+    color: white;           /* Navbar text color */
+    padding: 15px 50px;     /* Top/bottom 15px, left/right 50px */
+    display: flex;          /* Flexbox enable */
+    justify-content: space-between; /* Logo left, links right */
+    align-items: center;    /* Vertically center */
+    z-index: 100;           /* Sab se upar layer */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5); /* Shadow effect */
+}
+
+nav h1 {
+    font-size: 40px;        /* Logo text size */
+    color: #00d4ff;         /* Cyan color */
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; /* Glow effect */
+    animation: glow 2s ease-in-out infinite alternate; /* Animation */
+}
+
+
+
+
+nav a {
+    color: white;           /* Links white */
+    margin-left: 20px;      /* Links ke darmiyan gap */
+    text-decoration: none;  /* Underline remove */
+    font-size: 25px;        /* Link size */
+    transition: 0.01s;       /* Smooth hover effect  jaisy hi cursor hatao to colour bnd hojay ga  */
+}
+
+nav a:hover {
+    color: #00d4ff;         /* Hover pe cyan */
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; /* Hover glow */
+}
+        /* Main thank you box */
+        .thankyou-box{
+            background:#06162f; /* Box background */
+            padding:60px 50px; /* BIGGER padding for large box */
+            width:520px; /* Increased width */
+            max-width:90%; /* Responsive on small screens */
+            border-radius:15px; /* Rounded corners */
+            text-align:center; /* Center text */
+            box-shadow:0 0 25px rgba(0,0,0,0.6); /* Shadow effect */
+            animation: pop 0.6s ease; /* Entry animation */
+             
+    background-color: rgba(9, 29, 60, 0.5); /* dark blue with 70% opacity */
+    padding: 30px;
+    border-radius: 18px;
+        }
+
+        /* Heading style */
+        .thankyou-box h1{
+            color:#1abc9c; /* Green heading */
+            margin-bottom:15px; /* Space below heading */
+            font-size:36px; /* Bigger heading */
+        }
+
+        /* Paragraph text */
+        .thankyou-box p{
+            font-size:18px; /* Larger readable text */
+            line-height:1.6; /* Line spacing */
+            opacity:0.95; /* Slight transparency */
+        }
+
+        /* Animation keyframes */
+        @keyframes pop{
+            from{
+                transform:scale(0.8); /* Start small */
+                opacity:0; /* Invisible */
+            }
+            to{
+                transform:scale(1); /* Normal size */
+                opacity:1; /* Fully visible */
+            }
+        }
+
+        /* Footer styling */
+        footer{
+            position:fixed; /* Stay at bottom */
+            bottom:0; /* Align bottom */
+            width:100%; /* Full width */
+            background:#06162f; /* Footer color */
+            text-align:center; /* Center text */
+            padding:15px 0; /* Vertical padding */
+            font-size:14px; /* Small text */
+            border-top:1px solid rgba(255,255,255,0.1); /* Top border */
+        }
+    </style>
+</head>
+
+<body>
+<nav> <!-- Navbar -->
+  <h1>Techpedia</h1> <!-- Website logo/title -->
+
+  <div>                                     <!-- Links container -->
+        <a href="index1.html">Home</a>       <!-- Home link -->
+         <a href="login.html">SignIn</a>  
+        <a href="about.html">About</a>      <!-- About link -->
+        <a href="articles.html">Articles</a><!-- Articles link -->
+        <a href="feedback.html">Feedback</a><!-- Feedback link -->
+  </div>
+</nav>
+    <!-- Thank you message box -->
+    <div class="thankyou-box">
+        <h1>Thank You!</h1>
+        <p>
+            Thanks for your feedback.<br>
+            We really appreciate your support 
+        </p>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        © 2025 Tech Pedia | All Rights Reserved
+    </footer>
+
+</body>
+</html>

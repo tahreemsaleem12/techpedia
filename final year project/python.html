@@ -1,0 +1,306 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+</head>
+<body>
+    <style>
+* {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Include padding/border in width/height */
+    font-family: 'Arial', sans-serif; /* Set default font */
+}
+body {
+    background: #0b1e3b; /* Dark blue background */
+    color: white; /* Default text color white */
+    line-height: 1.8; /* Space between lines */
+}
+
+/* Navbar */
+nav {
+    position: fixed;                                 /* Fixed at top */
+    top: 0;                                          /* Top position */
+    width: 100%;                                     /* Full width */
+    background: #1a2b4c;                          /* Navbar background color */
+    color: white;                                  /* Navbar text color */
+    padding: 15px 50px;                             /* Padding inside navbar */
+    display: flex;                                  /* Flexbox for layout */
+    justify-content: space-between;                 /* Space between items */
+    align-items: center;                             /* Vertical alignment */
+    z-index: 100;                                   /* On top of other elements */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);             /* Shadow effect */
+}
+nav h1 {
+    font-size: 28px;                                    /* Font size for navbar title */
+    color: #00d4ff;                                             /* Title color */
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;          /* Neon effect */
+    animation: glow 2s ease-in-out infinite alternate;             /* Glow animation */
+}
+nav a {
+    color: white;                  /* Link color */
+    margin-left: 20px;            /* Space between links */
+    text-decoration: none;           /* Remove underline */
+    font-size: 25px;              /* Font size for links */
+    transition: 0.3s;             /* Smooth hover effect */
+}
+nav a:hover {
+    color: #00d4ff;                                  /* Change color on hover */
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; /* Neon effect on hover */
+}
+
+/* Main container */
+main {
+    width: 100%;                    /* Full width */
+    margin-top: 120px;               /* Space below navbar */
+    display: flex;                  /* Flex layout */
+    flex-direction: column;         /* Stack articles vertically */
+    gap: 60px;                       /* Space between articles */
+}
+
+
+/* Article box */
+.article-box {
+    display: flex;                                             /* Flex for left/right sections */
+    background: linear-gradient(145deg, #1f3a6e, #0b1e3b); /* Gradient background */
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Shadow for 3D effect */
+    overflow: hidden; /* Hide overflow content */
+    position: relative; /* For pseudo-elements */
+    width: 95%; /* Almost full width */
+    margin: 0 auto; /* Center horizontally */
+    animation: fadeInUp 1.5s ease-in-out; /* Fade-in animation   pura container jo upar move krta h         */
+    min-height: 750px; /* Minimum height */
+}
+
+/* Left side: text */
+.article-text {
+    flex: 1;                                            /* Take half space */
+    padding: 50px;                                      /* Inner padding */
+    position: relative;                               /* Relative for z-index */
+    z-index: 2;                                        /* Above pseudo-elements */ 
+}
+.article-text h2 {
+    font-size: 36px;                                              /* Heading size */
+    color: #00d4ff;                                            /* Heading color */
+    margin-bottom: 20px;                                        /* Space below heading */
+    text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff;           /* Glow effect */
+}
+.article-text h3 {
+    font-size: 22px;                                 /* Subheading size */
+    margin-top: 15px;                                   /* Space above */
+    margin-bottom: 10px;                             /* Space below */
+    color: #8ec6ff;                          /* Subheading color */
+}
+.article-text p {
+    color: #d0e7ff;                        /* Paragraph text color */
+    font-size: 16px;                    /* Paragraph font size */
+    margin-bottom: 15px;                    /* Space below paragraph */
+    text-align: justify;                  /* Justify text */
+}
+.article-text ul {
+    margin-bottom: 15px;                      /* Space below list */
+    padding-left: 20px;                       /* Indent for list */
+}
+.article-text ul li {
+    margin-bottom: 8px;                  /* Space between list items */
+}
+/* Links styling */
+.read-more {
+    color: white;                                    /* White link */
+    text-decoration: none;                          /* No underline */
+    font-weight: bold;                            /* Bold text */
+    font-size: large;                                /* Font size */
+}
+
+.read-more:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #cccccc; /* Gray on hover */
+}
+
+/* Right side: multiple images */
+.article-image {
+    flex: 1; /* Take half space */
+    height: 800px; /* Fixed height */
+    width: 800px; /* Fixed width */
+    position: relative; /* Relative positioning */
+    display: flex; /* Flex for images */
+    justify-content: flex-end; /* Align right */
+    align-items: flex-start; /* Align top */
+    padding: 20px; /* Inner padding */
+}
+.right-images {
+    height: 800px; /* Height of image container */
+    width: 800px; /* Width of container */
+    display: flex; /* Flex layout */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack images vertically */
+    gap: 100px; /* Space between images */
+    max-height: 850px; /* Limit height */
+}
+.right-images img {
+    height: 800px; /* Image height */
+    width: 800px; /* Image width */
+    width: 100%; /* Make responsive */
+    max-width: 800px; /* Maximum width */
+    height: 800px; /* Repeat height */
+    align-items: flex-end; /* Align items */
+    border-radius: 70px; /* Rounded corners */
+    transition: transform 0.5s, filter 0.5s; /* Smooth hover effect */
+}
+.right-images img:hover {
+    transform: scale(1.05); /* Slight zoom on hover    picture ko upar krta hai yay jub cursor ly k jain */
+    
+}
+
+/* Flowing animated side gradient */
+.article-box::before {
+    content: ""; /* Empty content */
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Top of container */
+    left: -50%; /* Start from left */
+    width: 200%; /* Twice container width */
+    height: 100%; /* Full height */
+    background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15), rgba(255,255,255,0.05)); /* Gradient */
+    transform: skewX(-25deg); /* Skew effect  tilted effect glow ka iski waja sy ara agr hata dain gy to straight hojay ga*/
+    animation: flow 5s linear infinite; /* Flow animation */
+    z-index: 1; /* Behind text */
+}
+
+/* Glitter overlay */
+.article-box::after {
+    content: ""; /* Empty content */
+    position: absolute; /* Absolute position */
+    top: 0; /* Top */
+    left: 0; /* Left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    pointer-events: none; /* Don't block clicks */
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); /* Glitter pattern */
+    background-size: 10px 10px; /* Size of glitter dots */
+    animation: glitter 3s linear infinite; /* Animation */
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-50px); } /* Start invisible & left */
+    100% { opacity: 1; transform: translateX(0); } /* End visible */
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); } /* Start invisible & bottom */
+    100% { opacity: 1; transform: translateY(0); } /* End visible */
+}
+@keyframes flow {
+    0% { left: -50%; } /* Start position */
+    100% { left: 100%; } /* End position */
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; } /* Start shimmer */
+    100% { background-position: 200% 0; } /* End shimmer */
+}
+@keyframes glitter {
+    0% { background-position: 0 0; } /* Start glitter */
+    100% { background-position: 100px 100px; } /* End glitter */
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff; } /* Start glow */
+    100% { text-shadow: 0 0 15px #00d4ff, 0 0 25px #00d4ff; } /* End glow */
+}
+
+/* Responsive */
+@media(max-width: 900px) { /* For screens <= 900px */
+    .article-box {
+        flex-direction: column; /* Stack vertically */
+        width: 95%; /* Adjust width */
+        height: auto; /* Auto height */
+    }
+    .article-image {
+        height: auto; /* Adjust height */
+        justify-content: center; /* Center images */
+        padding: 10px; /* Reduce padding */
+    }
+    .right-images {
+        flex-wrap: wrap; /* Wrap images */
+        max-height: none; /* Remove max height */
+        justify-content: center; /* Center horizontally */
+        gap: 10px; /* Reduce gap */
+    }
+    .right-images img {
+        max-width: 45%; /* Adjust image size */
+    }
+}
+</style>
+</head>
+<nav>
+    <h1>Techpedia</h1> <!-- Navbar title -->
+    <div>
+        <a href="index1.html">Home</a> <!-- Navigation links -->
+        <a href="about.html">About</a>
+        <a href="articles.html">Articles</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+</nav>
+
+<main>
+    
+    <!-- Article 1: Python -->
+    <div class="article-box"> <!-- Article container -->
+        <div class="article-text"> <!-- Left text section -->
+            <h2>Python Programming Language</h2> <!-- Main heading -->
+
+            <h3>Overview</h3> <!-- Subheading -->
+            <p>Python is a high-level, interpreted programming language designed by Guido van Rossum and first released in 1991. It emphasizes readability and simplicity, using indentation to define code blocks.</p> <!-- Paragraph -->
+            
+            <h3>History</h3>
+            <p>Python was developed as a successor to the ABC programming language. Python 2.0 was released in 2000, introducing list comprehensions and garbage collection. Python 3.0, released in 2008, fixed inconsistencies from earlier versions.</p>
+            <p>Its evolution has focused on increasing code clarity and expanding its library ecosystem, resulting in widespread adoption in education, web development, and scientific research.</p>
+
+            <h3>Features</h3>
+            <p>Python supports multiple programming paradigms: procedural, object-oriented, and functional. It is dynamically typed and comes with a comprehensive standard library covering file handling, networking, web services, and more.</p>
+            <ul>
+                <li>Readable syntax with indentation</li> <!-- List items -->
+                <li>Cross-platform support</li>
+                <li>Dynamic typing and memory management</li>
+                <li>Extensive standard library</li>
+                <li>Support for third-party packages via PyPI</li>
+            </ul>
+
+            <h3>Applications</h3>
+            <p>Python is extensively used in web development, automation, data science, machine learning, artificial intelligence, and scientific computing. Frameworks like Django and Flask enable rapid web application development.</p>
+            <p>Libraries like NumPy, Pandas, Matplotlib, and TensorFlow support data analysis and machine learning tasks, while Python’s simple syntax makes it ideal for rapid prototyping.</p>
+
+            <h3>Community</h3>
+            <p>Python has a large and active community contributing to extensive documentation, tutorials, and open-source libraries. The Python Software Foundation maintains the language and its ecosystem.</p>
+            <p>Community support ensures regular updates, best practices, and numerous learning resources, helping both beginners and professional developers.</p>
+<!-- Additional paragraphs about Python updates and features -->
+<p>The technical landscape of Python has shifted toward high performance and concurrency to meet modern enterprise demands. A major milestone in 2025 is the official support for a free-threaded build, which allows developers to run Python without the Global Interpreter Lock (GIL), finally unlocking true multi-core parallelism. Additionally, the integration of an experimental Just-In-Time (JIT) compiler and the increasing use of Rust-based tools like the uv package manager have significantly improved Python's execution speed and project management efficiency. </p>
+<p>Beyond technical performance, Python's dominance is sustained by its massive, supportive community and its versatility across various sectors. It remains the backbone of critical industries, from FinTech for fraud detection and algorithmic trading to Healthcare for predictive analytics in patient care. Its accessibility for non-programmers—including mathematicians, financial analysts, and researchers—ensures it continues to lead in interdisciplinary environments. As AI agents and large language models become more integrated into software, Python's rich ecosystem of libraries like TensorFlow, PyTorch, and Polars ensures it remains at the center of the next decade of technological innovation. </p>
+<p>n 2025, Python has solidified its position as the most popular programming language globally, driven largely by its role as the primary "lingua franca" for Artificial Intelligence (AI) and Data Science. With the release of Python 3.14 in October 2025, the language has introduced transformative features such as "t-strings" (template string literals) for custom string processing and "deferred evaluation" of type annotations to improve performance. These updates refine the developer experience by providing more actionable error messages and a modernized, colorful interactive shell (REPL) that aids both beginners and experts in rapid experimentation</p>
+
+            <h3>See Also</h3>
+            <ul>
+                <li>Django (web framework)</li>
+                <li>Flask (web framework)</li>
+                <li>NumPy (scientific computing)</li>
+                <li>Pandas (data analysis)</li>
+                <li>TensorFlow (machine learning)</li>
+            </ul>
+            <a href="https://www.geeksforgeeks.org/python-programming-language/"
+     target="_blank"
+     class="read-more">
+     Click to get  more information → <!-- External link -->
+  </a>
+        </div>
+        <div class="article-image"> <!-- Right images section -->
+            <div class="right-images"> <!-- Image container -->
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Python Logo"> <!-- Image -->
+                <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&w=1200&q=80" alt="Sample Image 2">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" alt="Java Logo">
+            </div>
+        </div>
+    </div>
+    </main>
+</body>
+</html>
