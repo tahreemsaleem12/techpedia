@@ -1,68 +1,127 @@
 # 💻 TechPedia
 
-A modern, responsive, and user-friendly technology website built using **HTML**, **CSS**, and **JavaScript**. TechPedia is designed to provide an engaging platform where users can explore technology-related content through a clean interface and seamless navigation. The website includes a dynamic **Light/Dark Mode** feature to enhance accessibility and user experience.
+A modern and responsive educational technology website built using **HTML5, CSS3, and JavaScript**. TechPedia is designed to provide users with informative articles on trending technology topics through a clean, interactive, and user-friendly interface. The project also includes a **Light/Dark Mode** feature to enhance accessibility and user experience.
 
 ---
 
-## 📖 Project Overview
+# 📖 Project Overview
 
-TechPedia is a frontend web project focused on delivering a visually appealing and responsive user interface. The website demonstrates modern web design principles, responsive layouts, and interactive functionality while ensuring a smooth browsing experience across different devices.
+TechPedia is a frontend web application that serves as a technology learning platform. It provides users with structured content on various technology domains, allowing them to explore educational articles through simple navigation and an attractive interface.
 
----
-
-## ✨ Features
-
-- 🌐 Responsive design for desktop, tablet, and mobile devices
-- 🌙 Light Mode & Dark Mode toggle using JavaScript
-- 🎨 Clean and modern user interface
-- 📱 Mobile-friendly layout
-- ⚡ Smooth navigation and user experience
-- 📄 Well-structured content sections
-- 🎯 Organized and reusable code structure
-- 💡 Interactive UI elements
+The website follows a complete user journey from the Home page to Login, About, Technology Articles, Feedback, and Thank You pages while maintaining a responsive and visually appealing design.
 
 ---
 
-## 🛠 Technologies Used
+# ✨ Features
 
-- HTML
-- CSS
+- 🏠 Responsive Home Page
+- 🔐 User Login Page
+- ℹ️ About Page
+- 📚 Technology Articles Section
+- 🤖 Artificial Intelligence Article
+- ⛓️ Blockchain Article
+- ☁️ Cloud Computing Article
+- 🔒 Cybersecurity Article
+- 💻 JavaScript Article
+- 🐍 Python Article
+- 🗄️ SQL Article
+- 📱 Mobile App Development Article
+- 📝 Feedback Page
+- 🙏 Thank You Page
+- 🌙 Light/Dark Mode Toggle using JavaScript
+- 📱 Fully Responsive Layout
+- 🎨 Clean and Modern User Interface
+- ⚡ Smooth Navigation Between Pages
+
+---
+
+# 🌐 Website Flow
+
+```
+Home
+   │
+   ▼
+Login
+   │
+   ▼
+About
+   │
+   ▼
+Technology Articles
+   │
+   └── html and css
+   ├── Artificial Intelligence
+   ├── Blockchain
+   ├── Cloud Computing
+   ├── Cybersecurity
+   ├── JavaScript
+   ├── Python
+   ├── SQL
+   └── Mobile App Development
+   │
+   ▼
+Feedback
+   │
+   ▼
+Thank You
+```
+
+---
+
+# 🛠 Technologies Used
+
+- HTML5
+- CSS3
 - JavaScript 
 
 ---
-## 🚀 How to Run
 
-1. Clone or download this repository.
-2. Open the project folder.
-3. Run `index.html` in your preferred web browser.
-4. Explore the website and switch between **Light** and **Dark Mode**.
-
----
-
-## 📚 Skills Demonstrated
+# 💡 Skills Demonstrated
 
 - Responsive Web Design
-- HTML5 Semantic Elements
-- CSS3 Styling & Layout
-- Flexbox & Grid
-- JavaScript n
-- Theme Switching (Light/Dark Mode)
-- UI/UX Design Principles
+- HTML5 Semantic Structure
+- CSS3 Styling
+- JavaScript 
+- Light/Dark Theme Switching
+- Multi-Page Website Development
+- User Interface (UI) Design
+- User Experience (UX) Principles
 
 ---
 
-## 🔮 Future Improvements
+# 📂 Project Files
 
-- Search functionality
-- Technology blog integration
-- User authentication
-- Category-based filtering
-- Backend and database integration
-- Bookmark/Favorites feature
+- `index.html` – Home Page
+- `login.html` – User Login
+- `about.html` – About TechPedia
+- `articles.html` – Technology Categories
+- `ai.html` – Artificial Intelligence
+- `blockchain.html` – Blockchain
+- `cloud.html` – Cloud Computing
+- `cybersecurity.html` – Cybersecurity
+- `javascript.html` – JavaScript
+- `python.html` – Python
+- `sql.html` – SQL
+- `mobileapp.html` – Mobile App Development
+- `thankyou.html` – Thank You Page
+- `index1.html` – home page with articles menu
 
 ---
 
-## 👩‍💻 Developed By
+# 🚀 Future Enhancements
+
+- User Authentication System
+- Search Functionality
+- Technology Blog Management
+- Backend Integration
+- Database Support
+- Bookmark & Favorites
+- User Profiles
+- Comment Section
+
+---
+
+# 👩‍💻 Developed By
 
 **Tahreem Saleem**
 
@@ -70,4 +129,4 @@ Engineering Student | Frontend Web Developer | Aspiring Software Engineer
 
 ---
 
-⭐ If you like this project, consider giving it a **Star** on GitHub!
+⭐ If you found this project helpful, consider giving it a **Star** on GitHub!
